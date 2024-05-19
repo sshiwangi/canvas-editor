@@ -2,8 +2,10 @@ import { useCallback, useRef, useState } from "react";
 import { SketchPicker } from "react-color";
 import { FaPlus, FaTimes } from "react-icons/fa";
 import debounce from "../../utils/debounce";
+import PropTypes from "prop-types";
+import { CgColorPicker } from "react-icons/cg";
 
-const ColorPicker = () => {
+const ColorPicker = ({ onChangeComplete }) => {
   const [color, setColor] = useState(null);
   const [colors, setColors] = useState([]);
   const [showPicker, setShowPicker] = useState(false);
@@ -13,15 +15,14 @@ const ColorPicker = () => {
 
   const handleChangeComplete = useCallback(
     debounce((color) => {
-      console.log("Debounced color change:", color.hex);
       setColor(color.hex);
       setColors((prevColors) => {
         const newColors = [color.hex, ...prevColors.slice(0, 4)];
-        console.log("Updated colors array:", newColors);
         return newColors;
       });
+      onChangeComplete(color.hex);
     }, 300),
-    []
+    [onChangeComplete]
   );
 
   const handleEyedropper = async () => {
@@ -33,9 +34,9 @@ const ColorPicker = () => {
           setColor(result.sRGBHex);
           setColors((prevColors) => {
             const newColors = [result.sRGBHex, ...prevColors.slice(0, 4)];
-            console.log("Updated colors array:", newColors);
             return newColors;
           });
+          onChangeComplete(result.sRGBHex);
         }
       } catch (error) {
         console.error("Error using Eyedropper API:", error);
@@ -46,8 +47,8 @@ const ColorPicker = () => {
   };
 
   return (
-    <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
+    <div className="text-start mt-4">
+      <div className="flex gap-2">
         {colors.map((col, index) => (
           <div
             key={index}
@@ -79,48 +80,52 @@ const ColorPicker = () => {
       </div>
 
       {showPicker && (
-        <div style={{ marginTop: "20px", position: "relative" }}>
-          <div style={{ position: "absolute", top: 0, right: 0 }}>
+        <div className="mt-[20px] relative bg-white">
+          <div
+            style={{
+              background: "rgb(255, 255, 255)",
+              borderTopLeftRadius: "4px",
+              borderTopRightRadius: "4px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 16px",
+            }}
+            className="flex justify-end p-2 pt-2 w-full"
+          >
             <button
               onClick={() => setShowPicker(false)}
               style={{
-                background: "none",
-                border: "none",
                 cursor: "pointer",
                 fontSize: "20px",
               }}
             >
-              <FaTimes />
+              <FaTimes size={18} />
             </button>
           </div>
           <SketchPicker
             color={color || "#fff"}
             onChangeComplete={handleChangeComplete}
           />
-          <button onClick={handleEyedropper} style={{ marginTop: "10px" }}>
-            Use Eyedropper
+          <button
+            className="w-full p-2 flex justify-between items-center"
+            onClick={handleEyedropper}
+            style={{
+              background: "rgb(255, 255, 255)",
+              borderBottomLeftRadius: "4px",
+              borderBottomRightRadius: "4px",
+              boxShadow:
+                "rgba(0, 0, 0, 0.15) 0px 0px 0px 1px, rgba(0, 0, 0, 0.15) 0px 8px 16px",
+            }}
+          >
+            <p className="text-sm text-gray-600">pick a color from this page</p>
+            <CgColorPicker />
           </button>
         </div>
       )}
-
-      {/* <div style={{ marginTop: "20px", fontSize: "18px" }}>
-        Selected Color:{" "}
-        <span style={{ fontWeight: "bold" }}>{color || "None"}</span>
-      </div>
-
-      <div
-        style={{
-          marginTop: "20px",
-          width: "100px",
-          height: "100px",
-          backgroundColor: color || "#fff",
-          margin: "0 auto",
-          border: "1px solid #ccc",
-          borderRadius: "50%",
-        }}
-      /> */}
     </div>
   );
 };
 
+ColorPicker.propTypes = {
+  onChangeComplete: PropTypes.func.isRequired,
+};
 export default ColorPicker;

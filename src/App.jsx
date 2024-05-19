@@ -2,123 +2,86 @@ import "./App.css";
 import CanvasComponent from "./components/custom/CanvasComponent";
 import ColorPicker from "./components/ui/ColorPicker";
 import Input from "./components/ui/Input";
-import mask from "./assets/global_temp_landscape_temp_10_mask.png";
-import maskstroke from "./assets/global_temp_landscape_temp_10_Mask_stroke.png";
-import designpattern from "./assets/global_temp_landscape_temp_10_Design_Pattern.png";
 import { useState } from "react";
+import templatedata from "./data/templatedata.json";
 
-const initialData = {
-  caption: {
-    text: "1 & 2 BHK Luxury Apartments at just Rs.34.97 Lakhs",
-    position: {
-      x: 50,
-      y: 50,
-    },
-    max_characters_per_line: 31,
-    font_size: 44,
-    alignment: "left",
-    text_color: "#FFFFFF",
-  },
-  cta: {
-    text: "Shop Now",
-    position: {
-      x: 190,
-      y: 320,
-    },
-    text_color: "#FFFFFF",
-    background_color: "#000000",
-  },
-  image_mask: {
-    x: 56,
-    y: 442,
-    width: 970,
-    height: 600,
-  },
-  urls: {
-    mask: mask,
-    stroke: maskstroke,
-    design_pattern: designpattern,
-  },
-};
 function App() {
-  const [data, setData] = useState(initialData);
-  const handleCaptionChange = (e) => {
-    setData((prevData) => ({
-      ...prevData,
-      caption: {
-        ...prevData.caption,
-        text: e.target.value,
-      },
-    }));
-  };
-
-  const handleCtaChange = (e) => {
-    setData((prevData) => ({
-      ...prevData,
-      cta: {
-        ...prevData.cta,
-        text: e.target.value,
-      },
-    }));
-  };
+  const [data, setData] = useState(templatedata);
+  const [uploadedImage, setUploadedImage] = useState(null);
+  const [templateColor, setTemplateColor] = useState("#0369A1");
+  const [fileName, setFileName] = useState(
+    "Change the creative ad image. Select File"
+  );
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      setData((prevData) => ({
-        ...prevData,
-        urls: {
-          ...prevData.urls,
-          design_pattern: reader.result,
-        },
-      }));
-    };
     if (file) {
-      reader.readAsDataURL(file);
+      setUploadedImage(file);
+      setFileName(file.name);
     }
   };
+
+  const handleInputChange = (key, value) => {
+    setData((prevData) => ({
+      ...prevData,
+      [key]: { ...prevData[key], text: value },
+    }));
+  };
+
+  const handleColorChange = (color) => {
+    setTemplateColor(color);
+  };
+
   return (
-    <div className="flex justify-center py-20 px-20">
-      <div>
-        <CanvasComponent data={data} />
+    <div className="flex flex-col items-center py-20 px-20 gap-20">
+      <div className="w-1/2 flex justify-center">
+        <CanvasComponent
+          data={data}
+          uploadedImage={uploadedImage}
+          templateColor={templateColor}
+        />
       </div>
-      <div className="flex flex-col items-center gap-8">
-        <div className="flex flex-col items-center">
+      <div className="flex w-1/2 flex-col items-center gap-8 p-4">
+        <div className="flex w-full flex-col items-center justify-center text-center">
           <h1 className="text-blue font-bold text-xl">Ad Customization</h1>
           <p className="text-lightgray">
             Customize your ad and get your template accordingly
           </p>
         </div>
-        <div className="flex flex-col items-center">
+        <div className="flex w-full flex-col items-center">
           <Input
             type="file"
             placeholder="change the add creative image"
             onChange={handleFileChange}
+            fileName={fileName}
           />
-          <p className="text-lightgray">Edit Contents</p>
+          <div className="flex w-full items-center justify-between">
+            <hr className="w-[38%]" />
+            <p className="text-lightgray">Edit Contents</p>
+            <hr className="w-[38%]" />
+          </div>
           <Input
             type="text"
             label="Ad Content"
             placeholder="Add your content here"
             value={data.caption.text}
-            onChange={handleCaptionChange}
+            onChange={(e) => handleInputChange("caption", e.target.value)}
           />
           <Input
             type="text"
             label="CTA"
             placeholder="Add CTA here"
             value={data.cta.text}
-            onChange={handleCtaChange}
+            onChange={(e) => handleInputChange("cta", e.target.value)}
           />
-          <div>
+          <div className="w-full flex items-start flex-col">
             <h1
               className="text-lightgray"
               style={{ textAlign: "center", marginTop: "20px" }}
             >
               Choose your color
             </h1>
-            <ColorPicker />
+            <ColorPicker onChangeComplete={handleColorChange} />
           </div>
         </div>
       </div>

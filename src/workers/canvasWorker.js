@@ -1,71 +1,181 @@
-self.onmessage = (e) => {
-  console.log("hello");
-  const { data } = e.data;
-  const canvas = new OffscreenCanvas(data.canvasWidth, data.canvasHeight);
+self.onmessage = async (e) => {
+  const { data, uploadedImage, templateColor } = e.data;
+
+  const canvas = new OffscreenCanvas(1080, 1080);
   const ctx = canvas.getContext("2d");
 
-  const designPatternImg = new Image();
-  const maskImg = new Image();
-  const maskStrokeImg = new Image();
+  const loadImageBitmap = async (url) => {
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Failed to fetch image at ${url}`);
+    }
+    const blob = await response.blob();
+    return createImageBitmap(blob);
+  };
+
+  const loadImageBitmapFromFile = async (file) => {
+    return createImageBitmap(file);
+  };
+
+  let designPatternImg;
+  let maskImg;
+  let maskStrokeImg;
+  let uploadedImg;
+
+  try {
+    designPatternImg = await loadImageBitmap(data.urls.design_pattern);
+    maskImg = await loadImageBitmap(data.urls.mask);
+    maskStrokeImg = await loadImageBitmap(data.urls.stroke);
+
+    if (uploadedImage) {
+      uploadedImg = await loadImageBitmapFromFile(uploadedImage);
+    }
+  } catch (err) {
+    console.log("error loading images", err);
+  }
+
+  const drawRoundedRect = (ctx, x, y, width, height, radius) => {
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+    ctx.fill();
+  };
 
   const drawLayers = () => {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.clearRect(0, 0, 1080, 1080);
 
-    ctx.fillStyle = "#0369A1";
-    // ctx.fillRect(0, 0, canvas.width, canvas.height);
+    // Background color
+    ctx.fillStyle = templateColor;
+    ctx.fillRect(0, 0, 1080, 1080);
 
-    // ctx.drawImage(designPatternImg, 0, 0, canvas.width, canvas.height);
+    // Design pattern
+    ctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(designPatternImg, 0, 0, 1080, 1080);
 
-    // ctx.globalCompositeOperation = "destination-in";
-    // ctx.drawImage(
-    //   maskImg,
-    //   data.image_mask.x,
-    //   data.image_mask.y,
-    //   data.image_mask.width,
-    //   data.image_mask.height
-    // );
+    // Mask
+    ctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(maskImg, 0, 0, 1080, 1080);
 
-    // ctx.globalCompositeOperation = "source-over";
-    // ctx.drawImage(
-    //   maskStrokeImg,
-    //   data.image_mask.x,
-    //   data.image_mask.y,
-    //   data.image_mask.width,
-    //   data.image_mask.height
-    // );
+    // Mask stroke
+    ctx.globalCompositeOperation = "source-over";
+    ctx.drawImage(maskStrokeImg, 0, 0, 1080, 1080);
 
-    // ctx.fillStyle = data.caption.text_color;
-    // ctx.font = `${data.caption.font_size}px Arial`;
-    // ctx.textAlign = data.caption.alignment;
-    // ctx.fillText(
-    //   data.caption.text,
-    //   data.caption.position.x,
-    //   data.caption.position.y
-    // );
+    // Uploaded Image at mask position
+    if (uploadedImg) {
+      ctx.globalCompositeOperation = "source-over";
+      ctx.drawImage(
+        uploadedImg,
+        data.image_mask.x,
+        data.image_mask.y,
+        data.image_mask.width,
+        data.image_mask.height
+      );
+    }
 
-    // ctx.fillStyle = data.cta.background_color;
-    // ctx.fillRect(data.cta.position.x, data.cta.position.y - 30, 150, 50);
-    // ctx.fillStyle = data.cta.text_color;
-    // ctx.font = "20px Arial";
-    // ctx.textAlign = "center";
-    // ctx.fillText(data.cta.text, data.cta.position.x + 75, data.cta.position.y);
+    // Caption
+    ctx.fillStyle = data.caption.text_color;
+    ctx.font = `${data.caption.font_size}px Arial`;
+    ctx.textAlign = data.caption.alignment;
+    const lines = wrapText(
+      ctx,
+      data.caption.text,
+      data.caption.position.x,
+      data.caption.position.y,
+      canvas.width - data.caption.position.x,
+      data.caption.font_size,
+      data.caption.max_characters_per_line
+    );
+    lines.forEach((line, index) => {
+      ctx.fillText(
+        line,
+        data.caption.position.x,
+        data.caption.position.y + index * data.caption.font_size
+      );
+    });
+
+    // CTA
+    const ctaFontSize = data.cta.font_size || 30;
+    const ctaWrapLength = data.cta.wrap_length || 20;
+    const ctaPadding = 24;
+    const ctaTextLines = wrapText(
+      ctx,
+      data.cta.text,
+      data.cta.position.x,
+      data.cta.position.y,
+      ctaWrapLength * ctaFontSize,
+      ctaFontSize,
+      ctaWrapLength
+    );
+
+    const ctaTextWidth = Math.max(
+      ...ctaTextLines.map((line) => ctx.measureText(line).width)
+    );
+    const ctaTextHeight = ctaTextLines.length * ctaFontSize;
+
+    ctx.fillStyle = data.cta.background_color;
+    drawRoundedRect(
+      ctx,
+      data.cta.position.x - ctaPadding / 2,
+      data.cta.position.y - ctaTextHeight - ctaPadding / 2,
+      ctaTextWidth + ctaPadding,
+      ctaTextHeight + ctaPadding,
+      10
+    );
+
+    ctx.fillStyle = data.cta.text_color;
+    ctx.font = `${ctaFontSize}px Arial`;
+    ctx.textAlign = "center";
+    ctaTextLines.forEach((line, index) => {
+      ctx.fillText(
+        line,
+        data.cta.position.x + ctaTextWidth / 2,
+        data.cta.position.y -
+          ctaTextHeight / 2 +
+          index * ctaFontSize -
+          ctaPadding / 4
+      );
+    });
 
     self.postMessage({
-      imageData: ctx.getImageData(0, 0, canvas.width, canvas.height),
+      imageData: ctx.getImageData(0, 0, 1080, 1080),
     });
   };
 
-  designPatternImg.onload = () => {
-    console.log("design pattern loaded");
-    maskImg.onload = () => {
-      console.log("mask loaded");
-      maskStrokeImg.onload = () => {
-        console.log("mask stroke loaded");
-        drawLayers();
-      };
-      maskStrokeImg.src = data.urls.stroke;
-    };
-    maskImg.src = data.urls.mask;
-  };
-  designPatternImg.src = data.urls.design_pattern;
+  drawLayers();
 };
+
+const wrapText = (
+  ctx,
+  text,
+  x,
+  y,
+  maxWidth,
+  lineHeight,
+  maxCharactersPerLine
+) => {
+  const words = text.split(" ");
+  let line = "";
+  const lines = [];
+
+  words.forEach((word) => {
+    if ((line + word).length <= maxCharactersPerLine) {
+      line += (line ? " " : "") + word;
+    } else {
+      lines.push(line);
+      line = word;
+    }
+  });
+  lines.push(line);
+
+  return lines;
+};
+
+export {};
