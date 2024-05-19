@@ -1,4 +1,3 @@
-// src/utils/debounce.js
 const debounce = (func, wait) => {
   let timeout;
   return function (...args) {

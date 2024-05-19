@@ -121,10 +121,11 @@ self.onmessage = async (e) => {
     const ctaTextHeight = ctaTextLines.length * ctaFontSize;
 
     ctx.fillStyle = data.cta.background_color;
+
     drawRoundedRect(
       ctx,
       data.cta.position.x - ctaPadding / 2,
-      data.cta.position.y - ctaTextHeight - ctaPadding / 2,
+      data.cta.position.y - (ctaTextHeight + ctaPadding),
       ctaTextWidth + ctaPadding,
       ctaTextHeight + ctaPadding,
       10
