@@ -33,7 +33,7 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col items-center py-20 px-20 gap-20">
+    <div className="flex flex-col-reverse items-center py-20 px-20 gap-20">
       <div className="w-1/2 flex justify-center">
         <CanvasComponent
           data={data}
