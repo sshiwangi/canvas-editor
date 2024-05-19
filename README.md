@@ -1,4 +1,4 @@
-# Canvas Editor Documentation
+# Canvas Editor
 
 ## Overview
 
@@ -73,4 +73,10 @@ Once the development server is running, navigate to the application in your brow
 
 ## Screenshots
 
+Editor
 
+![Screenshot 2024-05-19 232216](https://github.com/sshiwangi/canvas-editor/assets/77545230/42bb7d1d-bc50-4fb3-bcbe-f55ee2fd2e81)
+
+Canvas
+
+![Screenshot 2024-05-19 232336](https://github.com/sshiwangi/canvas-editor/assets/77545230/4c8229dc-c7c0-431a-8590-6f3e6c7d0433)
