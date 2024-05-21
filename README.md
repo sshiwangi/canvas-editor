@@ -57,7 +57,7 @@ Ensure you have the following installed:
    npm run dev
    ```
 
-   This command will start the development server and you can view the application in your browser at `http://localhost:3000`.
+   This command will start the development server and you can view the application in your browser at `http://localhost:5173`.
 
 ## Usage
 
