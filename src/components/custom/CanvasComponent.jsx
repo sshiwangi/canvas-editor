@@ -1,10 +1,8 @@
-import { useEffect, useRef } from "react";
+import { useEffect } from "react";
 import Worker from "../../workers/canvasWorker.js?worker";
 import PropTypes from "prop-types";
 
-const CanvasComponent = ({ data, uploadedImage, templateColor }) => {
-  const canvasRef = useRef(null);
-
+const CanvasComponent = ({ data, uploadedImage, templateColor, canvasRef }) => {
   useEffect(() => {
     const canvas = canvasRef.current;
     const ctx = canvas.getContext("2d");
@@ -86,5 +84,6 @@ CanvasComponent.propTypes = {
   }).isRequired,
   uploadedImage: PropTypes.instanceOf(File),
   templateColor: PropTypes.string.isRequired,
+  canvasRef: PropTypes.object.isRequired,
 };
 export default CanvasComponent;

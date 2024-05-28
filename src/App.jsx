@@ -2,7 +2,7 @@ import "./App.css";
 import CanvasComponent from "./components/custom/CanvasComponent";
 import ColorPicker from "./components/ui/ColorPicker";
 import Input from "./components/ui/Input";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import templatedata from "./data/templatedata.json";
 
 function App() {
@@ -12,6 +12,7 @@ function App() {
   const [fileName, setFileName] = useState(
     "Change the creative ad image. Select File"
   );
+  const canvasRef = useRef(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -32,6 +33,17 @@ function App() {
     setTemplateColor(color);
   };
 
+  const handleDownload = () => {
+    const canvas = canvasRef.current;
+    const dataURL = canvas.toDataURL("image/png");
+
+    const link = document.createElement("a");
+    link.href = dataURL;
+    link.download = "canvas-image.png";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
   return (
     <div className="flex flex-col-reverse items-center py-20 px-20 gap-20">
       <div className="w-1/2 flex justify-center">
@@ -39,6 +51,7 @@ function App() {
           data={data}
           uploadedImage={uploadedImage}
           templateColor={templateColor}
+          canvasRef={canvasRef}
         />
       </div>
       <div className="flex w-1/2 flex-col items-center gap-8 p-4">
@@ -74,6 +87,7 @@ function App() {
             value={data.cta.text}
             onChange={(e) => handleInputChange("cta", e.target.value)}
           />
+
           <div className="w-full flex items-start flex-col">
             <h1
               className="text-lightgray"
@@ -83,6 +97,12 @@ function App() {
             </h1>
             <ColorPicker onChangeComplete={handleColorChange} />
           </div>
+          <button
+            onClick={handleDownload}
+            className="mt-4 px-4 py-2 bg-blue-500 text-white rounded"
+          >
+            Download Image
+          </button>
         </div>
       </div>
     </div>
