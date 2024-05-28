@@ -6,16 +6,17 @@ The Canvas Editor is a powerful tool designed for creating and customizing ad te
 
 ## Features
 
-- **Dynamic Image Upload**: Users can upload images to be integrated into the canvas.
+- **Image Upload**: Users can upload images to be integrated into the canvas.
 - **Text Customization**: Easily add and edit ad content text and call-to-action (CTA) text.
 - **Color Picker**: Select and apply colors to different elements on the canvas.
 - **Template Customization**: Modify the background color and integrate pre-defined design patterns.
+- **Download Image**: Download your customized template.
 - **Real-time Rendering**: Instant updates to the canvas as changes are made.
 
 ## Tools and Technologies
 
 - **React**: A JavaScript library for building user interfaces.
-- **HTML5 Canvas**: Used for rendering the dynamic images and custom graphics.
+- **HTML5 Canvas**: Used it for rendering the dynamic images and custom graphics and Implemented a download feature by converting the canvas content to a data URL and triggering a download using an anchor element.
 - **PropTypes**: Ensures the components receive the correct types of props.
 - **CSS (TailwindCSS)**: For styling the application.
 - **Web Workers**: Offloads the heavy lifting of image processing to background threads, ensuring the main thread remains responsive.
