@@ -1,11 +1,12 @@
 import React from "react";
+// import AnimatedEditorPreview from "../components/custom/animated-hero";
 
 function Home() {
   return (
     <div>
       <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
         <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="#" className="text-2xl font-bold text-primary-600">
+          <a href="/" className="text-2xl font-bold text-primary-600">
             CanvasEdge
           </a>
           <div className="hidden md:flex space-x-6">
@@ -36,7 +37,7 @@ function Home() {
               Log In
             </a> */}
             <a
-              href="#"
+              href="/dashboard"
               className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition"
             >
               Try now
@@ -58,7 +59,7 @@ function Home() {
               </p>
               <div className="flex space-x-4">
                 <a
-                  href="#"
+                  href="/dashboard"
                   className="bg-primary-600 text-white px-6 py-3 rounded-lg hover:bg-primary-700 transition"
                 >
                   Get Started
@@ -72,9 +73,10 @@ function Home() {
               </div>
             </div>
             <div className="md:w-1/2">
-              <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
+              {/* <AnimatedEditorPreview /> */}
+              {/* <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
                 <span className="text-gray-500">Canvas Editor Preview</span>
-              </div>
+              </div> */}
             </div>
           </div>
         </section>

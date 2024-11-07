@@ -41,11 +41,21 @@ const ColorPicker = ({ color, onChange }) => {
 };
 
 // EditableText Component
-const EditableText = ({ content, position, color, size, isSelected, onUpdate, onSelect }) => {
+const EditableText = ({
+  content,
+  position,
+  color,
+  size,
+  isSelected,
+  onUpdate,
+  onSelect,
+}) => {
   const [isEditing, setIsEditing] = useState(false);
   const [localContent, setLocalContent] = useState(content);
   const [isResizing, setIsResizing] = useState(false);
-  const [initialSize, setInitialSize] = useState(size || { width: 200, height: 50 });
+  const [initialSize, setInitialSize] = useState(
+    size || { width: 200, height: 50 }
+  );
   const textRef = useRef(null);
 
   const handleDoubleClick = (e) => {
@@ -71,19 +81,19 @@ const EditableText = ({ content, position, color, size, isSelected, onUpdate, on
       const deltaY = moveEvent.clientY - startY;
       const newWidth = Math.max(50, startWidth + deltaX);
       const newHeight = Math.max(20, startHeight + deltaY);
-      
+
       setInitialSize({ width: newWidth, height: newHeight });
       onUpdate({ size: { width: newWidth, height: newHeight } });
     };
 
     const handleMouseUp = () => {
       setIsResizing(false);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   return (
@@ -128,10 +138,19 @@ const EditableText = ({ content, position, color, size, isSelected, onUpdate, on
 };
 
 // ResizableImage Component
-const ResizableImage = ({ content, position, size, isSelected, onUpdate, onSelect }) => {
+const ResizableImage = ({
+  content,
+  position,
+  size,
+  isSelected,
+  onUpdate,
+  onSelect,
+}) => {
   const [isResizing, setIsResizing] = useState(false);
-  const [currentSize, setCurrentSize] = useState(size || { width: 200, height: 200 });
-  
+  const [currentSize, setCurrentSize] = useState(
+    size || { width: 200, height: 200 }
+  );
+
   const handleResize = (e) => {
     e.stopPropagation();
     setIsResizing(true);
@@ -145,19 +164,19 @@ const ResizableImage = ({ content, position, size, isSelected, onUpdate, onSelec
       const deltaX = moveEvent.clientX - startX;
       const newWidth = Math.max(50, startWidth + deltaX);
       const newHeight = newWidth / aspectRatio;
-      
+
       setCurrentSize({ width: newWidth, height: newHeight });
       onUpdate({ size: { width: newWidth, height: newHeight } });
     };
 
     const handleMouseUp = () => {
       setIsResizing(false);
-      document.removeEventListener('mousemove', handleMouseMove);
-      document.removeEventListener('mouseup', handleMouseUp);
+      document.removeEventListener("mousemove", handleMouseMove);
+      document.removeEventListener("mouseup", handleMouseUp);
     };
 
-    document.addEventListener('mousemove', handleMouseMove);
-    document.addEventListener('mouseup', handleMouseUp);
+    document.addEventListener("mousemove", handleMouseMove);
+    document.addEventListener("mouseup", handleMouseUp);
   };
 
   return (
@@ -287,8 +306,7 @@ const CanvasEditor = () => {
   const [color, setColor] = useState("#0369A1");
   const [isResizing, setIsResizing] = useState(false);
   const canvasRef = useRef(null);
-   const fileInputRef = useRef(null);
-
+  const fileInputRef = useRef(null);
 
   const templates = [
     {
@@ -317,35 +335,34 @@ const CanvasEditor = () => {
     setSelectedElement(newElement);
   };
 
-   const handleAddImage = () => {
-     fileInputRef.current?.click();
-   };
+  const handleAddImage = () => {
+    fileInputRef.current?.click();
+  };
 
-   const handleImageUpload = (e) => {
-     const file = e.target.files?.[0];
-     if (file) {
-       const reader = new FileReader();
-       reader.onload = (event) => {
-         const newElement = {
-           id: Date.now(),
-           type: "image",
-           content: event.target.result,
-           position: { x: 50, y: 50 },
-           size: { width: 200, height: 200 },
-         };
-         setElements([...elements, newElement]);
-         setSelectedElement(newElement);
-       };
-       reader.readAsDataURL(file);
-     }
-   };
+  const handleImageUpload = (e) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = (event) => {
+        const newElement = {
+          id: Date.now(),
+          type: "image",
+          content: event.target.result,
+          position: { x: 50, y: 50 },
+          size: { width: 200, height: 200 },
+        };
+        setElements([...elements, newElement]);
+        setSelectedElement(newElement);
+      };
+      reader.readAsDataURL(file);
+    }
+  };
 
-   const handleElementUpdate = (elementId, updates) => {
-     setElements(
-       elements.map((el) => (el.id === elementId ? { ...el, ...updates } : el))
-     );
-   };
-
+  const handleElementUpdate = (elementId, updates) => {
+    setElements(
+      elements.map((el) => (el.id === elementId ? { ...el, ...updates } : el))
+    );
+  };
 
   const handleColorChange = (newColor) => {
     setColor(newColor);
@@ -443,9 +460,9 @@ const CanvasEditor = () => {
     <div className="flex h-screen bg-gray-50">
       {/* Sidebar */}
       <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
-        <div className="p-4 border-b border-gray-200">
+        <a href="/" className="p-4 border-b border-gray-200 cursor-pointer">
           <h2 className="text-2xl font-bold text-primary-600">CanvasEdge</h2>
-        </div>
+        </a>
 
         <div className="p-4">
           <div className="relative">
