@@ -24,7 +24,7 @@ const ColorPicker = ({ color, onChange }) => {
         <button
           key={c}
           className={`w-8 h-8 rounded-full border-2 ${
-            color === c ? "border-gray-600" : "border-transparent"
+            color === c ? "border-gray-600 dark:border-gray-300" : "border-transparent"
           }`}
           style={{ backgroundColor: c }}
           onClick={() => onChange(c)}
@@ -121,7 +121,7 @@ const EditableText = ({
           onChange={(e) => setLocalContent(e.target.value)}
           onBlur={handleBlur}
           autoFocus
-          className="w-full h-full p-1 resize-none border-none outline-none bg-transparent"
+          className="w-full h-full p-1 resize-none border-none outline-none bg-transparent dark:bg-gray-800"
           style={{ color }}
         />
       ) : (
@@ -129,7 +129,7 @@ const EditableText = ({
       )}
       {isSelected && (
         <div
-          className="absolute bottom-0 right-0 w-4 h-4 bg-white border border-gray-400 cursor-se-resize"
+          className="absolute bottom-0 right-0 w-4 h-4 bg-white dark:bg-gray-700 border border-gray-400 dark:border-gray-600 cursor-se-resize"
           onMouseDown={handleResize}
         />
       )}
@@ -202,7 +202,7 @@ const ResizableImage = ({
       />
       {isSelected && (
         <div
-          className="absolute bottom-0 right-0 w-4 h-4 bg-white border border-gray-400 cursor-se-resize"
+          className="absolute bottom-0 right-0 w-4 h-4 bg-white dark:bg-gray-700 border border-gray-400 dark:border-gray-600 cursor-se-resize"
           onMouseDown={handleResize}
         />
       )}
@@ -286,7 +286,7 @@ const CanvasElement = ({
           />
           {isSelected && (
             <div
-              className="absolute bottom-0 right-0 w-4 h-4 bg-white border border-gray-400 cursor-se-resize"
+              className="absolute bottom-0 right-0 w-4 h-4 bg-white dark:bg-gray-700 border border-gray-400 dark:border-gray-600 cursor-se-resize"
               onMouseDown={(e) => {
                 e.stopPropagation();
                 onResize(true);
@@ -457,26 +457,26 @@ const CanvasEditor = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-50">
+    <div className="flex h-screen bg-gray-50 dark:bg-gray-900">
       {/* Sidebar */}
-      <div className="w-80 bg-white border-r border-gray-200 flex flex-col">
-        <a href="/" className="p-4 border-b border-gray-200 cursor-pointer">
-          <h2 className="text-2xl font-bold text-primary-600">CanvasEdge</h2>
+      <div className="w-80 bg-white dark:bg-gray-800 border-r border-gray-200 dark:border-gray-700 flex flex-col">
+        <a href="/" className="p-4 border-b border-gray-200 dark:border-gray-700 cursor-pointer">
+          <h2 className="text-2xl font-bold text-primary-600 dark:text-primary-400">CanvasEdge</h2>
         </a>
 
         <div className="p-4">
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400" />
+            <Search className="absolute left-3 top-2.5 h-5 w-5 text-gray-400 dark:text-gray-300" />
             <input
               type="text"
               placeholder="Search templates..."
-              className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600"
+              className="w-full pl-10 pr-4 py-2 border border-gray-200 dark:border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary-600 dark:focus:ring-primary-400"
             />
           </div>
         </div>
 
         <div className="flex-1 overflow-y-auto p-4">
-          <h3 className="text-sm font-semibold text-gray-500 mb-4">
+          <h3 className="text-sm font-semibold text-gray-500 dark:text-gray-400 mb-4">
             TEMPLATES
           </h3>
           <div className="grid gap-4">
@@ -486,8 +486,8 @@ const CanvasEditor = () => {
                 onClick={() => handleTemplateSelect(template)}
                 className={`p-4 rounded-lg border ${
                   selectedTemplate?.id === template.id
-                    ? "border-primary-600 bg-primary-50"
-                    : "border-gray-200 hover:border-primary-600"
+                    ? "border-primary-600 bg-primary-50 dark:border-primary-400 dark:bg-primary-600"
+                    : "border-gray-200 dark:border-gray-700 hover:border-primary-600"
                 } transition-colors`}
               >
                 <img
@@ -496,10 +496,10 @@ const CanvasEditor = () => {
                   className="w-full rounded-md mb-2"
                 />
                 <div className="text-left">
-                  <h4 className="font-semibold text-gray-900">
+                  <h4 className="font-semibold text-gray-900 dark:text-gray-100">
                     {template.name}
                   </h4>
-                  <p className="text-sm text-gray-500">
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {template.dimensions.width} x {template.dimensions.height}
                   </p>
                 </div>
@@ -512,17 +512,17 @@ const CanvasEditor = () => {
       {/* Main Content */}
       <div className="flex-1 flex flex-col">
         {/* Toolbar */}
-        <div className="h-16 border-b border-gray-200 flex items-center justify-between px-6 bg-white">
+        <div className="h-16 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6 bg-white dark:bg-gray-800">
           <div className="flex space-x-4">
             <button
               onClick={handleAddText}
-              className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
             >
               <Type className="h-5 w-5" />
             </button>
             <button
               onClick={handleAddImage}
-              className="p-2 text-gray-600 hover:bg-gray-100 rounded-lg"
+              className="p-2 text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg"
             >
               <ImageIcon className="h-5 w-5" />
             </button>
@@ -530,20 +530,19 @@ const CanvasEditor = () => {
           <ColorPicker color={color} onChange={handleColorChange} />
           <button
             onClick={handleDownload}
-            className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition"
+            className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition dark:bg-primary-500 dark:hover:bg-primary-600"
           >
             Download
           </button>
         </div>
 
         {/* Canvas Area */}
-        {/* Canvas Area */}
         <div className="flex-1 p-8 flex">
           {selectedTemplate ? (
             <div className="flex-1 flex justify-center items-center">
               <div
                 ref={canvasRef}
-                className="relative bg-white shadow-lg"
+                className="relative bg-white dark:bg-gray-800 shadow-lg"
                 style={{
                   width: selectedTemplate.dimensions.width,
                   height: selectedTemplate.dimensions.height,
@@ -588,7 +587,7 @@ const CanvasEditor = () => {
               </div>
             </div>
           ) : (
-            <div className="flex-1 flex items-center justify-center text-gray-500">
+            <div className="flex-1 flex items-center justify-center text-gray-500 dark:text-gray-400">
               Select a template to get started
             </div>
           )}

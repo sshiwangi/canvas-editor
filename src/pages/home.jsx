@@ -1,59 +1,20 @@
 import React from "react";
+import Navbar from "../components/home/Navbar";
+import Footer from "../components/home/Footer";
 // import AnimatedEditorPreview from "../components/custom/animated-hero";
 
 function Home() {
   return (
     <div>
-      <header className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm">
-        <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
-          <a href="/" className="text-2xl font-bold text-primary-600">
-            CanvasEdge
-          </a>
-          <div className="hidden md:flex space-x-6">
-            <a
-              href="#features"
-              className="text-gray-600 hover:text-primary-600 transition"
-            >
-              Features
-            </a>
-            <a
-              href="#how-it-works"
-              className="text-gray-600 hover:text-primary-600 transition"
-            >
-              How It Works
-            </a>
-            {/* <a
-              href="#pricing"
-              className="text-gray-600 hover:text-primary-600 transition"
-            >
-              Pricing
-            </a> */}
-          </div>
-          <div className="flex items-center space-x-4">
-            {/* <a
-              href="#"
-              className="text-primary-600 hover:text-primary-700 transition"
-            >
-              Log In
-            </a> */}
-            <a
-              href="/dashboard"
-              className="bg-primary-600 text-white px-4 py-2 rounded-lg hover:bg-primary-700 transition"
-            >
-              Try now
-            </a>
-          </div>
-        </nav>
-      </header>
-
-      <main className="pt-24">
+      <Navbar />
+      <main className="pt-16 dark:bg-gray-800 bg-white">
         <section className="container mx-auto px-4 py-16 md:py-24">
           <div className="flex flex-col md:flex-row items-center">
             <div className="md:w-1/2 mb-8 md:mb-0">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 dark:text-gray-100 mb-4">
                 Create Stunning Designs with Ease
               </h1>
-              <p className="text-xl text-gray-600 mb-6">
+              <p className="text-xl text-gray-600 dark:text-gray-300 mb-6">
                 Upload images, adjust text, change colors, and generate creative
                 content seamlessly with our powerful canvas editor.
               </p>
@@ -66,7 +27,7 @@ function Home() {
                 </a>
                 <a
                   href="#"
-                  className="bg-white text-primary-600 border border-primary-600 px-6 py-3 rounded-lg hover:bg-primary-50 transition"
+                  className="bg-white text-primary-600 border border-primary-600 dark:bg-gray-800 dark:text-white dark:border-gray-700 px-6 py-3 rounded-lg hover:bg-primary-50 transition"
                 >
                   Watch Demo
                 </a>
@@ -74,20 +35,20 @@ function Home() {
             </div>
             <div className="md:w-1/2">
               {/* <AnimatedEditorPreview /> */}
-              {/* <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
-                <span className="text-gray-500">Canvas Editor Preview</span>
+              {/* <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Canvas Editor Preview</span>
               </div> */}
             </div>
           </div>
         </section>
       </main>
-      <section id="features" className="bg-gray-50 py-16 md:py-24">
+      <section id="features" className="bg-gray-50 dark:bg-gray-800 py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
             Powerful Features for Creative Minds
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -107,12 +68,12 @@ function Home() {
               <h3 className="text-xl font-semibold mb-2">
                 Image Upload &amp; Editing
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Easily upload and edit images with our intuitive tools. Crop,
                 resize, and apply filters effortlessly.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -130,12 +91,12 @@ function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Text Customization</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Add and customize text with a wide range of fonts, sizes, and
                 styles. Perfect for creating eye-catching designs.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -153,13 +114,13 @@ function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Color Palette</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Access a vast color palette and color picker to find the perfect
                 hues for your designs. Create stunning color schemes
                 effortlessly.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -179,12 +140,12 @@ function Home() {
               <h3 className="text-xl font-semibold mb-2">
                 AI-Powered Content Generation
               </h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Leverage our AI to generate creative content, from catchy
                 headlines to unique design elements, enhancing your projects.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -202,12 +163,12 @@ function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Responsive Design</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Create designs that look great on any device. Our editor ensures
                 your work is responsive and adaptable.
               </p>
             </div>
-            <div className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md hover:shadow-lg transition">
               <div className="text-primary-600 mb-4">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -225,7 +186,7 @@ function Home() {
                 </svg>
               </div>
               <h3 className="text-xl font-semibold mb-2">Template Library</h3>
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Access a vast library of professionally designed templates to
                 jumpstart your creative process.
               </p>
@@ -233,48 +194,48 @@ function Home() {
           </div>
         </div>
       </section>
-      <section id="how-it-works" className="py-16 md:py-24 bg-white">
+      <section id="how-it-works" className="py-16 md:py-24 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
             How It Works
           </h2>
           <div className="max-w-4xl mx-auto">
             <div className="flex flex-col md:flex-row items-center mb-16">
               <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                <div className="bg-primary-100 rounded-full h-16 w-16 flex items-center justify-center mb-4">
-                  <span className="text-primary-600 text-2xl font-bold">1</span>
+                <div className="bg-primary-100 dark:bg-primary-600 rounded-full h-16 w-16 flex items-center justify-center mb-4">
+                  <span className="text-primary-600 dark:text-white text-2xl font-bold">1</span>
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
                   Sign Up and Create a Project
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   Create your account and start a new project. Choose from our
                   wide range of templates or start with a blank canvas.
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
-                  <span className="text-gray-500">Sign Up Illustration</span>
+                <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
+                  <span className="text-gray-500 dark:text-gray-400">Sign Up Illustration</span>
                 </div>
               </div>
             </div>
 
             <div className="flex flex-col md:flex-row-reverse items-center mb-16">
               <div className="md:w-1/2 mb-8 md:mb-0 md:pl-8">
-                <div className="bg-primary-100 rounded-full h-16 w-16 flex items-center justify-center mb-4">
-                  <span className="text-primary-600 text-2xl font-bold">2</span>
+                <div className="bg-primary-100 dark:bg-primary-600 rounded-full h-16 w-16 flex items-center justify-center mb-4">
+                  <span className="text-primary-600 dark:text-white text-2xl font-bold">2</span>
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
                   Upload and Edit Images
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   Easily upload your images and use our intuitive tools to edit,
                   crop, and enhance them to perfection.
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
-                  <span className="text-gray-500">
+                <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
+                  <span className="text-gray-500 dark:text-gray-400">
                     Image Editing Illustration
                   </span>
                 </div>
@@ -283,21 +244,21 @@ function Home() {
 
             <div className="flex flex-col md:flex-row items-center mb-16">
               <div className="md:w-1/2 mb-8 md:mb-0 md:pr-8">
-                <div className="bg-primary-100 rounded-full h-16 w-16 flex items-center justify-center mb-4">
-                  <span className="text-primary-600 text-2xl font-bold">3</span>
+                <div className="bg-primary-100 dark:bg-primary-600 rounded-full h-16 w-16 flex items-center justify-center mb-4">
+                  <span className="text-primary-600 dark:text-white text-2xl font-bold">3</span>
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
                   Customize Text and Colors
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   Add text to your design and customize fonts, sizes, and
                   colors. Use our color picker to find the perfect palette for
                   your project.
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
-                  <span className="text-gray-500">
+                <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
+                  <span className="text-gray-500 dark:text-gray-400">
                     Text and Color Customization Illustration
                   </span>
                 </div>
@@ -306,21 +267,21 @@ function Home() {
 
             <div className="flex flex-col md:flex-row-reverse items-center">
               <div className="md:w-1/2 mb-8 md:mb-0 md:pl-8">
-                <div className="bg-primary-100 rounded-full h-16 w-16 flex items-center justify-center mb-4">
-                  <span className="text-primary-600 text-2xl font-bold">4</span>
+                <div className="bg-primary-100 dark:bg-primary-600 rounded-full h-16 w-16 flex items-center justify-center mb-4">
+                  <span className="text-primary-600 dark:text-white text-2xl font-bold">4</span>
                 </div>
                 <h3 className="text-2xl font-semibold mb-4">
                   Generate Creative Content
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   Use our AI-powered tools to generate unique content, from
                   catchy headlines to creative design elements that enhance your
                   project.
                 </p>
               </div>
               <div className="md:w-1/2">
-                <div className="bg-gray-200 rounded-lg p-4 aspect-video flex items-center justify-center">
-                  <span className="text-gray-500">
+                <div className="bg-gray-200 dark:bg-gray-700 rounded-lg p-4 aspect-video flex items-center justify-center">
+                  <span className="text-gray-500 dark:text-gray-400">
                     AI Content Generation Illustration
                   </span>
                 </div>
@@ -338,87 +299,87 @@ function Home() {
           </div>
         </div>
       </section>
-      <section id="showcase" className="py-16 md:py-24 bg-gray-50">
+      <section id="showcase" className="py-16 md:py-24 bg-gray-50 dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
             Showcase of Creative Possibilities
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 1 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 1 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">
                   Social Media Post
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   A vibrant social media post design created using our canvas
                   editor.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 2 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 2 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Event Flyer</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   An eye-catching event flyer designed with custom graphics and
                   text.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 3 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 3 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Business Card</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   A professional business card design with a unique color
                   scheme.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 4 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 4 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Instagram Story</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   An engaging Instagram story template with custom
                   illustrations.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 5 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 5 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Product Label</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   A sleek product label design showcasing our color adjustment
                   features.
                 </p>
               </div>
             </div>
 
-            <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
-              <div className="aspect-w-16 aspect-h-9 bg-gray-200 flex items-center justify-center">
-                <span className="text-gray-500">Project 6 Image</span>
+            <div className="bg-white dark:bg-gray-700 rounded-lg overflow-hidden shadow-md hover:shadow-lg transition">
+              <div className="aspect-w-16 aspect-h-9 bg-gray-200 dark:bg-gray-700 flex items-center justify-center">
+                <span className="text-gray-500 dark:text-gray-400">Project 6 Image</span>
               </div>
               <div className="p-6">
                 <h3 className="text-xl font-semibold mb-2">Email Header</h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-gray-300">
                   A captivating email header created with our AI-powered content
                   generation.
                 </p>
@@ -429,7 +390,7 @@ function Home() {
           <div className="text-center mt-12">
             <a
               href="#"
-              className="text-primary-600 hover:text-primary-700 font-semibold text-lg inline-flex items-center"
+              className="text-primary-600 dark:text-primary-400 hover:text-primary-700 font-semibold text-lg inline-flex items-center"
             >
               View More Examples
               <svg
@@ -449,21 +410,21 @@ function Home() {
         </div>
       </section>
 
-      <section id="faq" className="py-16 md:py-24 bg-white">
+      <section id="faq" className="py-16 md:py-24 bg-white dark:bg-gray-800">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-center text-gray-900 dark:text-gray-100 mb-12">
             Frequently Asked Questions
           </h2>
 
           <div className="max-w-3xl mx-auto">
             <div className="space-y-6">
-              <div className="border-b border-gray-200 pb-6">
+              <div className="border-b border-gray-200 dark:border-gray-600 pb-6">
                 <button className="flex items-center justify-between w-full text-left">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     How easy is it to use the canvas editor?
                   </span>
                   <svg
-                    className="w-6 h-6 text-gray-500"
+                    className="w-6 h-6 text-gray-500 dark:text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -478,7 +439,7 @@ function Home() {
                   </svg>
                 </button>
                 <div className="mt-3">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     Our canvas editor is designed with user-friendliness in
                     mind. It features an intuitive interface that allows users
                     of all skill levels to easily upload images, adjust text,
@@ -487,13 +448,13 @@ function Home() {
                 </div>
               </div>
 
-              <div className="border-b border-gray-200 pb-6">
+              <div className="border-b border-gray-200 dark:border-gray-600 pb-6">
                 <button className="flex items-center justify-between w-full text-left">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     Can I use the editor on mobile devices?
                   </span>
                   <svg
-                    className="w-6 h-6 text-gray-500"
+                    className="w-6 h-6 text-gray-500 dark:text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -508,7 +469,7 @@ function Home() {
                   </svg>
                 </button>
                 <div className="mt-3">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     Yes, our canvas editor is fully responsive and works
                     seamlessly on mobile devices, tablets, and desktop
                     computers. You can create and edit your designs on the go,
@@ -517,13 +478,13 @@ function Home() {
                 </div>
               </div>
 
-              <div className="border-b border-gray-200 pb-6">
+              <div className="border-b border-gray-200 dark:border-gray-600 pb-6">
                 <button className="flex items-center justify-between w-full text-left">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     What kind of AI-generated content can I create?
                   </span>
                   <svg
-                    className="w-6 h-6 text-gray-500"
+                    className="w-6 h-6 text-gray-500 dark:text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -538,7 +499,7 @@ function Home() {
                   </svg>
                 </button>
                 <div className="mt-3">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     Our AI-powered tools can help you generate various types of
                     creative content, including catchy headlines, social media
                     captions, product descriptions, and even design elements
@@ -547,13 +508,13 @@ function Home() {
                 </div>
               </div>
 
-              <div className="border-b border-gray-200 pb-6">
+              <div className="border-b border-gray-200 dark:border-gray-600 pb-6">
                 <button className="flex items-center justify-between w-full text-left">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     Is there a limit to the number of designs I can create?
                   </span>
                   <svg
-                    className="w-6 h-6 text-gray-500"
+                    className="w-6 h-6 text-gray-500 dark:text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -568,7 +529,7 @@ function Home() {
                   </svg>
                 </button>
                 <div className="mt-3">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     The number of designs you can create depends on your
                     subscription plan. Our Basic plan allows for 5 projects,
                     while our Pro and Enterprise plans offer unlimited design
@@ -578,13 +539,13 @@ function Home() {
                 </div>
               </div>
 
-              <div className="border-b border-gray-200 pb-6">
+              <div className="border-b border-gray-200 dark:border-gray-600 pb-6">
                 <button className="flex items-center justify-between w-full text-left">
-                  <span className="text-lg font-semibold text-gray-900">
+                  <span className="text-lg font-semibold text-gray-900 dark:text-gray-100">
                     Can I collaborate with my team on designs?
                   </span>
                   <svg
-                    className="w-6 h-6 text-gray-500"
+                    className="w-6 h-6 text-gray-500 dark:text-gray-400"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -599,7 +560,7 @@ function Home() {
                   </svg>
                 </button>
                 <div className="mt-3">
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-gray-300">
                     Yes, our Pro and Enterprise plans include collaboration
                     features that allow you to work with your team members on
                     designs in real-time. You can share projects, leave
@@ -610,7 +571,7 @@ function Home() {
             </div>
 
             <div className="mt-12 text-center">
-              <p className="text-gray-600">
+              <p className="text-gray-600 dark:text-gray-300">
                 Still have questions? Feel free to contact our support team.
               </p>
               <a
@@ -623,7 +584,7 @@ function Home() {
           </div>
         </div>
       </section>
-      <section id="cta" className="bg-primary-600 py-16 md:py-24">
+      <section id="cta" className="bg-primary-600 dark:bg-primary-700 py-16 md:py-24">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
@@ -654,147 +615,8 @@ function Home() {
           </div>
         </div>
       </section>
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">CanvasEdge</h3>
-              <p className="text-gray-400">
-                Empowering creativity with our intuitive canvas editor. Create
-                stunning designs effortlessly.
-              </p>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Product</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Features
-                  </a>
-                </li>
-                {/* <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Pricing
-                  </a>
-                </li> */}
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Templates
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    AI Tools
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Company</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    About Us
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Careers
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Blog
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Contact
-                  </a>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-lg font-semibold mb-4">Connect</h4>
-              <ul className="space-y-2">
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Twitter
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Facebook
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    Instagram
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#"
-                    className="text-gray-400 hover:text-white transition"
-                  >
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <hr className="border-gray-700 my-8" />
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">
-              © 2023 CanvasEdge. All rights reserved.
-            </p>
-            <div className="flex space-x-4 mt-4 md:mt-0">
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                Terms of Service
-              </a>
-              <a href="#" className="text-gray-400 hover:text-white transition">
-                Cookie Policy
-              </a>
-            </div>
-          </div>
-        </div>
-      </footer>
+
+      <Footer />
     </div>
   );
 }
