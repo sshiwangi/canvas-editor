@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
 import Sparkles from "../custom/Sparkles";
+import { Link } from "react-router-dom";
 
 const Hero = () => {
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
@@ -197,20 +198,20 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <button className="px-8 py-3 mb-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-medium transition-colors relative group overflow-hidden">
+            <Link to={"/dashboard"} className="px-8 py-3 mb-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-medium transition-colors relative group overflow-hidden">
               <span className="relative z-10">Get Started</span>
-              <motion.div
+              {/* <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600"
                 initial={{ x: "100%" }}
                 whileHover={{ x: 0 }}
                 transition={{ duration: 0.3 }}
-              />
-            </button>
+              /> */}
+            </Link>
           </motion.div>
 
           {/* Secondary Actions */}
           <motion.div
-            className="flex flex-wrap items-center justify-center gap-4"
+            className="flex flex-wrap mt-20 items-center justify-center gap-4"
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.9, duration: 0.8 }}
