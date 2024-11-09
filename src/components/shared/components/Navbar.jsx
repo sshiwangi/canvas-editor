@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import ThemeSwitcher from "../custom/theme-switcher";
+import ThemeSwitcher from "../../custom/theme-switcher";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -17,7 +17,7 @@ function Navbar() {
 
   const navItems = [
     { name: "Features", href: "#features" },
-    { name: "How It Works", href: "#how-it-works" },
+    { name: "How It Works", href: "#working" },
   ];
 
   return (
@@ -69,7 +69,7 @@ function Navbar() {
             <div className="flex items-center space-x-4">
               <ThemeSwitcher />
               <motion.a
-                href="/dashboard"
+                href="/register"
                 className="relative inline-flex items-center px-6 py-2 overflow-hidden rounded-full group"
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}

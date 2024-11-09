@@ -198,7 +198,10 @@ const Hero = () => {
             animate={{ y: 0, opacity: 1 }}
             transition={{ delay: 0.7, duration: 0.8 }}
           >
-            <Link to={"/dashboard"} className="px-8 py-3 mb-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-medium transition-colors relative group overflow-hidden">
+            <Link
+              to={"/signup"}
+              className="px-8 py-3 mb-10 bg-emerald-500 hover:bg-emerald-600 text-white rounded-full font-medium transition-colors relative group overflow-hidden"
+            >
               <span className="relative z-10">Get Started</span>
               {/* <motion.div
                 className="absolute inset-0 bg-gradient-to-r from-emerald-600 to-teal-600"

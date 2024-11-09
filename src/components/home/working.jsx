@@ -67,7 +67,10 @@ const Working = () => {
   ];
 
   return (
-    <section className="bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] py-32 overflow-hidden">
+    <section
+      id="working"
+      className="bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] py-32 overflow-hidden"
+    >
       <motion.div style={{ opacity }} className="max-w-[1200px] mx-auto px-4">
         {/* Header */}
         <motion.div

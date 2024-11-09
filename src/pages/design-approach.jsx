@@ -54,66 +54,66 @@ const SelectionCard = ({
 
 const DesignApproach = () => {
   return (
-    <div className="min-h-screen bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] py-20 px-4">
-      <div className="max-w-6xl mx-auto">
-        {/* Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h1 className="text-4xl md:text-5xl font-normal text-[#1A1A1A] dark:text-white mb-8">
-            How would you like to design your website?
-          </h1>
-        </motion.div>
-
-        {/* Cards Container */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
-        >
-          <SelectionCard
-            title="Generate a Design with AI"
-            description="Get a personalized site design in seconds."
-            buttonText="Generate a Design"
-            icon={Wand2}
-            onClick={() => {}}
-          />
-          <SelectionCard
-            title="Customize a Template"
-            description="Browse thousands of designs, then pick one to customize."
-            buttonText="Pick a Template"
-            icon={Palette}
-            onClick={() => {}}
-          />
-        </motion.div>
-
-        {/* Footer Link */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="text-center"
-        >
-          <motion.a
-            href="#"
-            className="text-[#4285f4] dark:text-[#4285f4] hover:text-[#3367d6] dark:hover:text-[#3367d6] inline-flex items-center gap-2 text-lg font-medium"
-            whileHover={{ x: 5 }}
+      <div className="min-h-screen pt-40 bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] px-4">
+        <div className="max-w-4xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="text-center mb-16"
           >
-            Continue with Setup for Now
-            <motion.span
-              animate={{ x: [0, 5, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
+            <h1 className="text-4xl md:text-5xl font-bold text-[#1A1A1A] dark:text-white mb-8">
+              How would you like to design your website?
+            </h1>
+          </motion.div>
+
+          {/* Cards Container */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
+          >
+            <SelectionCard
+              title="Generate a Design with AI"
+              description="Get a personalized site design in seconds."
+              buttonText="Generate a Design"
+              icon={Wand2}
+              onClick={() => {}}
+            />
+            <SelectionCard
+              title="Customize a Template"
+              description="Browse thousands of designs, then pick one to customize."
+              buttonText="Pick a Template"
+              icon={Palette}
+              onClick={() => {}}
+            />
+          </motion.div>
+
+          {/* Footer Link */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-center"
+          >
+            <motion.a
+              href="#"
+              className="text-[#4285f4] dark:text-[#4285f4] hover:text-[#3367d6] dark:hover:text-[#3367d6] inline-flex items-center gap-2 text-lg font-medium"
+              whileHover={{ x: 5 }}
             >
-              →
-            </motion.span>
-          </motion.a>
-        </motion.div>
+              Continue with Setup for Now
+              <motion.span
+                animate={{ x: [0, 5, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                →
+              </motion.span>
+            </motion.a>
+          </motion.div>
+        </div>
       </div>
-    </div>
   );
 };
 

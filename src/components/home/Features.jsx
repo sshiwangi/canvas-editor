@@ -3,7 +3,7 @@ import { Zap, Globe, Coins, Shield } from "lucide-react";
 
 const Features = () => {
   return (
-    <section className="bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] py-32">
+    <section id="features" className="bg-gradient-to-b from-white via-[#FAFAFA] to-[#F5F5F5] dark:bg-gradient-to-b dark:from-[#1A1A1A] dark:via-[#333333] dark:to-[#1b1b1b] py-32">
       <div className="max-w-[1200px] mx-auto px-4">
         {/* Header with exact styling */}
         <div className="inline-flex bg-emerald-500/10 dark:bg-emerald-500/20 px-2 py-1 rounded-full">
